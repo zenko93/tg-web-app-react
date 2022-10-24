@@ -16,7 +16,7 @@ const Form = () => {
         };
 
         tg.sendData(JSON.stringify(data));
-    }, []);
+    });
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
@@ -24,7 +24,7 @@ const Form = () => {
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
         };
-    }, []);
+    });
 
     useEffect(() => {
         tg.MainButton.setParams({
