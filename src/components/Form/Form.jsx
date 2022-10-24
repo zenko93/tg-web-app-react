@@ -16,7 +16,7 @@ const Form = () => {
         };
 
         tg.sendData(JSON.stringify(data));
-    });
+    }, []);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
@@ -24,13 +24,13 @@ const Form = () => {
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
         };
-    });
+    }, []);
 
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         });
-    }, [tg]);
+    }, []);
 
     useEffect(() => {
         if (!country || !city) {
@@ -38,7 +38,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [country, city, tg]);
+    }, [country, city]);
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value);
